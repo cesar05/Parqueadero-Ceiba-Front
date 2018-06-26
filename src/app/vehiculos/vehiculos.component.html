@@ -1,0 +1,24 @@
+<div class="table-responsive" style="height: 300px;margin: 20px">
+  <h4>Vehiculos Parqueados</h4>
+  <div class="form-group">
+    <input class="form-control form-control-sm" type="text" [(ngModel)]="filter" placeholder="Filtrar por placa">
+  </div>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <th>Placa</th>
+      <th>Tipo</th>
+      <th>Fecha Ingreso</th>
+      <th></th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of vehiculosParqueados | filterVehiculo:filter">
+        <td>{{item.placa}}</td>
+        <td>{{item.tipo}}</td>
+        <td>{{item.fechaIngreso}}</td>
+        <td>
+          <button class="btn btn-info btn-sm btn-block" type="button" (click)="registrarSalida(item)">Salir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
