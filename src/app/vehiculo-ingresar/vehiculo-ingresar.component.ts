@@ -27,11 +27,11 @@ export class VehiculoIngresarComponent {
   registrar(): void {
     this.vehiculoService.postVehiculoParqueo(this.vehiculo).subscribe(
       (res) => {
-        console.log(res);
+        this.vehiculo = new Vehiculo();
         this.resultado = new Respuesta(res.msj, true);
         this.vehiculoService.getVehiculosParqueados().subscribe(res => this.vehiculosParqueados = res);
       }, (err) => {
-        console.log(err)
+        this.vehiculo = new Vehiculo();
         if (err.status == 0) {
           this.resultado = new Respuesta("No fue posible establecer conexion con el servidor", false);
         }
